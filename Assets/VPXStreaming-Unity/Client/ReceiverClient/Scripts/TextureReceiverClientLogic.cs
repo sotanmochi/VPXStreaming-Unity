@@ -81,7 +81,6 @@ namespace VPXStreaming.Client.LiteNetLib
             int dataLength = reader.GetInt();
             Array.Resize(ref _EncodedData, dataLength);
             reader.GetBytes(_EncodedData, dataLength);
-            Debug.Log("Data size: " + _EncodedData.Length + " [Bytes]");
 
             _Decoder.Decode(ref _EncodedData, _EncodedData.Length, ref _RGBColorData);
 

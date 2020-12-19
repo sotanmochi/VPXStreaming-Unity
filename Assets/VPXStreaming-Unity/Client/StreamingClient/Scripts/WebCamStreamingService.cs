@@ -49,11 +49,12 @@ namespace VPXStreaming.Client
                                 .Subscribe(_ => 
                                 {
                                     _texture2D.SetPixels32(_webCamTexture.GetPixels32());
+                                    _texture2D.Apply();
 
                                     // sw.Start();
 
                                     byte[] colorFrame = _texture2D.GetRawTextureData();
-                                    _Encoder.EncodeFromRgba(ref colorFrame, _Width, _Height, false, ref _VP8EncodedData);
+                                    _Encoder.EncodeFromRgba(ref colorFrame, _Width, _Height, true, ref _VP8EncodedData);
                                     _textureStreamingCLient.BroadcastRawTextureData(_VP8EncodedData, _Width, _Height, ++_frameCount);
 
                                     // sw.Stop();
