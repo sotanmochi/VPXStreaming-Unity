@@ -55,11 +55,11 @@ namespace VPXStreaming.Client
             if (_textureData == null 
              || _textureData.width != width || _textureData.height != height)
             {
-                _textureData = new Texture2D(width, height);
+                _textureData = new Texture2D(width, height, TextureFormat.RGB24, false);
             }
 
             if (_textureData != null && _textureReceiverClient.RawTextureData != null)
-            {
+            {            
                 _textureData.LoadRawTextureData(_textureReceiverClient.RawTextureData);
                 _textureData.Apply();
             }
